@@ -1,9 +1,9 @@
-def call(String branch, String repoUrl, String credentialsId) {
-    echo "Cloning repo: ${repoUrl} (branch: ${branch})"
-
-    git(
-        branch: branch,
-        url: repoUrl,
-        credentialsId: credentialsId
-    )
+def call(string repo_url ,string branch_name,String creds ) {
+  echo "cloning the repo from ${repo_url} and ${branch_name}"
+    if (creds) {
+      git branch: branch_name, url: repo_url,credentials:creds
+}
+    else{
+        git branch: branch_name, url: repo_url
+}
 }
